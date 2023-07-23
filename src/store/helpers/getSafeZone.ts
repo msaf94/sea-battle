@@ -33,7 +33,6 @@ export function getSafeZone(ships: ShipPartState[][]) {
                 const left: ShipPartLocation = { column: shipPart.location.column - 1, row: shipPart.location.row };
 
                 [topLeft, top, topRight, right, bottomRight, bottom, bottomLeft, left].forEach(safeCell => {
-                    console.log(safeCell);
                     result.push(safeCell);
                 });
             });

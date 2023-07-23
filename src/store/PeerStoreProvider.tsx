@@ -39,6 +39,7 @@ export const PeerStoreProvider: Component<ParentProps> = props => {
 
     const {
         isActionStage,
+        isDebugModeEnabled,
         isHostById,
         setCurrentActivePlayer,
         setHost,
@@ -149,7 +150,7 @@ export const PeerStoreProvider: Component<ParentProps> = props => {
         conn()?.on('data', _peerMessage => {
             const peerMessage = _peerMessage as PeerMessage;
 
-            console.log(peerMessage);
+            if (isDebugModeEnabled()) console.log(peerMessage);
 
             if (peerMessage.type === PeerMessageType.READY_STATE) {
                 setEnemyState('ready', peerMessage.data);
@@ -215,8 +216,6 @@ export const PeerStoreProvider: Component<ParentProps> = props => {
         // текущий игрок является хостом
         if (!id) {
             if (currentPlayerState.id) {
-                console.log('host', currentPlayerState.id);
-
                 setHost(currentPlayerState.id);
             }
 
