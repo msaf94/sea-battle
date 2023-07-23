@@ -2,6 +2,8 @@ import { useNavigate } from '@solidjs/router';
 import { Component, onMount } from 'solid-js';
 import { usePeerState } from 'store/PeerStoreProvider';
 
+import { urlBasename } from 'constants';
+
 import { Wrapper } from './styles';
 
 export const GetSessionID: Component = () => {
@@ -11,7 +13,7 @@ export const GetSessionID: Component = () => {
     onMount(() => {
         startPeerSession();
         setTimeout(() => {
-            navigate(`/session/${state.peerId}`);
+            navigate(`/${urlBasename}/session/${state.peerId}`);
         }, 1000);
     });
 
