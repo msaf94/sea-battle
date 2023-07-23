@@ -8,7 +8,7 @@ import { routes } from './routes';
 import { theme } from './theme';
 
 export const App: Component = () => {
-    const Routes = useRoutes(routes);
+    const Routes = useRoutes(routes, import.meta.env.DEV ? '/' : '/sea-battle/');
 
     return (
         <ThemeProvider theme={theme}>
