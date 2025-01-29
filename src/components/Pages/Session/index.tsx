@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from '@solidjs/router';
-import { Component, onMount } from 'solid-js';
+import { Component, createEffect } from 'solid-js';
 import { enemyStore } from 'store/enemyStore';
 import { gameStore } from 'store/gameStore';
 import { usePeerState } from 'store/PeerStoreProvider';
@@ -18,7 +18,7 @@ export const Session: Component = () => {
     const navigate = useNavigate();
     const { enemyIsPresent, isPlayerReady: isEnemyReady } = enemyStore;
 
-    onMount(() => {
+    createEffect(() => {
         if (id && !state.peerId) startPeerSession(id);
     });
 

@@ -3,14 +3,14 @@ import type { Component } from 'solid-js';
 import { ThemeProvider } from 'solid-styled-components';
 import { PeerStoreProvider } from 'store/PeerStoreProvider';
 
-import { urlBasename } from 'constants';
+import { baseName } from 'constants';
 
 import { GlobalStyles } from './GlobalStyles';
 import { routes } from './routes';
 import { theme } from './theme';
 
 export const App: Component = () => {
-    const Routes = useRoutes(routes, import.meta.env.DEV ? '/' : `/${urlBasename}/`);
+    const Routes = useRoutes(routes, baseName);
 
     return (
         <ThemeProvider theme={theme}>
